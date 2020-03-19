@@ -6,7 +6,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-     前端支点
+    突破微信小程序图片校验 |  前端支点
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -29,58 +29,17 @@
 <body>
   <div id="app">
     <main class="content">
-      
-<section class="cover">
-    
-      
-      <a class="forkMe" href="https://github.com/s249359986/"
-        target="_blank"><img width="149" height="149" src="/images/forkme.png"
-          class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
-    
-  <div class="cover-frame">
-    <div class="bg-box">
-      <img src="/images/cover1.jpg" alt="image frame" />
-    </div>
-    <div class="cover-inner text-center text-white">
-      <h1><a href="/">前端支点</a></h1>
-      <div id="subtitle-box">
-        
-        <span id="subtitle"></span>
-        
-      </div>
-      <div>
-        
-      </div>
-    </div>
-  </div>
-  <div class="cover-learn-more">
-    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
-  </div>
-</section>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
-
-<div id="main">
-  <section class="outer">
-  <article class="articles">
-    
-    
-    
-    
-    <article id="post-突破微信小程序图片校验" class="article article-type-post" itemscope
+      <section class="outer">
+  <article id="post-突破微信小程序图片校验" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
     
     <header class="article-header">
        
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/19/%E7%AA%81%E7%A0%B4%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%9B%BE%E7%89%87%E6%A0%A1%E9%AA%8C/"
-    >突破微信小程序图片校验</a
-  >
-</h2>
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  突破微信小程序图片校验
+</h1>
   
 
     </header>
@@ -94,9 +53,36 @@
       
       
       
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">932字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">4分钟</span>
+        </span>
+    </span>
+</div>
+
       
     </div>
     
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
 
     
 
@@ -154,129 +140,106 @@
       
       <!-- reward -->
       
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-  
-
-</article>
-    
-    <article id="post-wxxcxplsc" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/18/wxxcxplsc/"
-    >微信小程序文件批量上传</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/03/18/wxxcxplsc/" class="article-date">
-  <time datetime="2020-03-18T13:59:19.000Z" itemprop="datePublished">2020-03-18</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是一篇关于微信小程序中文件批量上传的开发实践总结。文件上传听起来很不起眼，即使加上批量二字似乎也不是难事，但是这条平凡之路，铺在微信小程序上似乎变的有些陡峭。</p>
-<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>微信还是很 nice ，提供了一些和网络相关的方法。其中  <a href="https://developers.weixin.qq.com/miniprogram/dev/api/network/upload/wx.uploadFile.html" target="_blank" rel="noopener">wx.uploadFile</a> 用于将本地资源上传到服务器。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 微信官方例子</span><br><span class="line"></span><br><span class="line">wx.chooseImage(&#123;</span><br><span class="line">  success (res) &#123;</span><br><span class="line">    const tempFilePaths &#x3D; res.tempFilePaths</span><br><span class="line">    wx.uploadFile(&#123;</span><br><span class="line">      url: &#39;https:&#x2F;&#x2F;example.weixin.qq.com&#x2F;upload&#39;, &#x2F;&#x2F;仅为示例，非真实的接口地址</span><br><span class="line">      filePath: tempFilePaths[0],</span><br><span class="line">      name: &#39;file&#39;,</span><br><span class="line">      formData: &#123;</span><br><span class="line">        &#39;user&#39;: &#39;test&#39;</span><br><span class="line">      &#125;,</span><br><span class="line">      success (res)&#123;</span><br><span class="line">        const data &#x3D; res.data</span><br><span class="line">        &#x2F;&#x2F;do something</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>属性 filePath 类型 String 作用将上传文件的临时路径或者网络路径。<br>不是 Array 类型显然无法同时上传多个。（遗憾）</li>
-<li>属性 formData 类型 Object ，作用HTTP 请求中其他额外的 formdata （注意：小程序中无法使用 new FormData）</li>
-</ul>
-<p>于是乎：</p>
-<p>是否可以将文件路径封装成 Object 作为 formData 的参数实现批量上传呢？</p>
-<p>结果同样是遗憾的，我们在服务端只会接收到一堆临时文件地址的字符串。（尴尬）</p>
-<p>为什么 filePath 的参数就可以而 formdata 就不行？</p>
-<p>原因：微信内部会将 filePath 临时文件地址转化成实际的二进制文件流传到服务端，但是在 formData 中并不会如此处理只是当做特定数据类型处理上传。</p>
-<h2 id="探索"><a href="#探索" class="headerlink" title="探索"></a>探索</h2><p>抱着试试看的心理，又看了一下  <a href="https://note.youdao.com/" target="_blank" rel="noopener">wx.request</a> 方法，读过无数遍后，依旧是绝望，似乎还不如 wx.uploadFile 连一个文件都传不上去。</p>
-<p>郁闷，无奈，为什么会这样，是微信忘了，还是有其他原因限制。（内部人士看到此处，希望能给出合理解释。）</p>
-<h2 id="曙光"><a href="#曙光" class="headerlink" title="曙光"></a>曙光</h2><p>发扬快狗技术不放弃，不言败的精神，继续上下求索。</p>
-<p>既然有防火墙，我们只能搭梯子越过！</p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ol>
-<li>首先将文件转化成可以解码的格式。</li>
-<li>将多个编码的字符串一起封装上传。</li>
-<li>服务端按照约定的编码格式进行解码写入硬盘。<h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3></li>
-</ol>
-<p>文件编码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const fileSystemManager &#x3D; wx.getFileSystemManager()</span><br><span class="line"></span><br><span class="line">fileSystemManager.readFile(&#123;</span><br><span class="line">        filePath: filePath, &#x2F;&#x2F; 例如图片临时路径</span><br><span class="line">        encoding: &#39;base64&#39;,</span><br><span class="line">        success (res) &#123;</span><br><span class="line">          let &#123; data &#125; &#x3D; res &#x2F;&#x2F; 编码后的数据</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure>
-
-<p>数据封装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let fileList &#x3D; [data1, data2, data3]</span><br></pre></td></tr></table></figure>
-<p>上传</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">wx.request(&#123;</span><br><span class="line">  url: &#39;kuaigou&#x2F;fe&#x2F;api&#39;, </span><br><span class="line">  data: &#123;</span><br><span class="line">    fileList: fileList</span><br><span class="line">  &#125;,</span><br><span class="line">  header: &#123;</span><br><span class="line">    &#39;content-type&#39;: &#39;application&#x2F;json&#39; &#x2F;&#x2F; 默认值</span><br><span class="line">  &#125;,</span><br><span class="line">  success (res) &#123;</span><br><span class="line">    console.log(res.data)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>服务端(nodeJs)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let decodeImg &#x3D; Buffer.from(data, &#39;base64&#39;) &#x2F;&#x2F; data 为编码的数据</span><br><span class="line"></span><br><span class="line">  fs.writeFile(&#39;path&#39;, decodeImg, &#39;base64&#39;).then((data &#x3D;&gt; &#123;</span><br><span class="line">      console.log(&#39;data:suc&#39;, data)</span><br><span class="line">    </span><br><span class="line">    &#125;)).catch(err &#x3D;&gt; &#123;</span><br><span class="line">      console.error(&#39;data:err&#39;, err)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h4><p><a href="https://github.com/s249359986/multiple-upload" target="_blank" rel="noopener">github</a></p>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>这可能是众多方法中最不起眼的一个。</p>
-<p>欢迎读者发表更多更优的方法。</p>
-
-      
-      <!-- reward -->
+      <div id="reward-btn">
+        打赏
+      </div>
       
     </div>
     
     
       <!-- copyright -->
       
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
     <footer class="article-footer">
       
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-  
-
-</article>
-    
-  </article>
-  
-
-  
-</section>
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
 </div>
 
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/03/19/%E7%AA%81%E7%A0%B4%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%9B%BE%E7%89%87%E6%A0%A1%E9%AA%8C/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/03/18/wxxcxplsc/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">微信小程序文件批量上传</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+
+  
+  
+  
+
+</article>
+</section>
       <footer class="footer">
   <div class="outer">
     <ul class="list-inline">
@@ -403,6 +366,30 @@
 </script>
 
 
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
 
 
 
