@@ -73,6 +73,115 @@
     
     
     
+    <article id="post-blog2020-03-24-2352" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/24/blog2020-03-24-2352/"
+    >使用vue-cli3 预设 定制前端开发模板</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/24/blog2020-03-24-2352/" class="article-date">
+  <time datetime="2020-03-24T15:53:00.000Z" itemprop="datePublished">2020-03-24</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>vue-cli3 在 vue-cli3 的基础上真正的做到了简洁，开箱即用，简单到几乎看不到配置。</p>
+<p>通用性的提升，往往伴随着个性化的减弱。</p>
+<p>面对不同形态的业务需求，我们应该如何量身定做模板呢？</p>
+<p>本文重点：远程 preset</p>
+<h2 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h2><blockquote>
+<p> 你可以通过发布 git repo 将一个 preset 分享给其他开发者。这个 repo 应该包含以下文件：</p>
+<ul>
+<li>preset.json: 包含 preset 数据的主要文件（必需）。</li>
+<li>generator.js: 一个可以注入或是修改项目中文件的 Generator。</li>
+<li>prompts.js: 一个可以通过命令行对话为 generator 收集选项的 prompts 文件。</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 从 GitHub repo 使用 preset</span><br><span class="line">vue create --preset username&#x2F;repo my-project</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>GitLab 和 BitBucket 也是支持的。如果要从私有 repo 获取，请确保使用 –clone 选项：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vue create --preset gitlab:username&#x2F;repo --clone my-project</span><br><span class="line">vue create --preset bitbucket:username&#x2F;repo --clone my-project</span><br></pre></td></tr></table></figure>
+
+<h2 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h2><p>创建git repo （repo为仓库repository的缩写）也就是创建一个仓库例如vue-cli-plugin-sdh<br>username 为 github 用户名，作者用户名为 s249359986<br>最终 git repo 就是 s249359986/vue-cli-plugin-sdh</p>
+<h3 id="preset-json-文件（必须）"><a href="#preset-json-文件（必须）" class="headerlink" title="preset.json 文件（必须）"></a>preset.json 文件（必须）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;useConfigFiles&quot;: true,</span><br><span class="line">    &quot;plugins&quot;: &#123;</span><br><span class="line">        &quot;@vue&#x2F;cli-plugin-babel&quot;: &#123;</span><br><span class="line">            &quot;version&quot;: &quot;^3.0.0&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;@vue&#x2F;cli-plugin-eslint&quot;: &#123;</span><br><span class="line">            &quot;version&quot;: &quot;^3.0.0&quot;,</span><br><span class="line">            &quot;config&quot;: &quot;recommended&quot;,</span><br><span class="line">            &quot;lintOn&quot;: [</span><br><span class="line">                &quot;save&quot;,</span><br><span class="line">                &quot;commit&quot;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;configs&quot;: &#123;</span><br><span class="line">        &quot;vue&quot;: &#123;           </span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;postcss&quot;: &#123;&#125;,</span><br><span class="line">        &quot;eslintConfig&quot;: &#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;router&quot;: true,</span><br><span class="line">    &quot;vuex&quot;: false,</span><br><span class="line">    &quot;routerHistoryMode&quot;: false</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中当 “useConfigFiles”: true 时， configs 内的配置信息会直接覆盖初始化后项目中的 vue.config.js</p>
+<h3 id="prompts-js-文件"><a href="#prompts-js-文件" class="headerlink" title="prompts.js 文件"></a>prompts.js 文件</h3><blockquote>
+<p>一个可以通过命令行对话为 generator 收集选项的 prompts 文件<br>prompts.js 参考如下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">参数详解 https:&#x2F;&#x2F;github.com&#x2F;SBoudrias&#x2F;Inquirer.js#question</span><br><span class="line"></span><br><span class="line">module.exports &#x3D; [</span><br><span class="line">     &#123;</span><br><span class="line">       name: &quot;vuex&quot;,</span><br><span class="line">       type: &quot;confirm&quot;,</span><br><span class="line">       message: &#96;是否需要使用 vuex&#96;,</span><br><span class="line">       default: false</span><br><span class="line">     &#125;   </span><br><span class="line">  ]</span><br></pre></td></tr></table></figure>
+
+<h3 id="generator-js-文件"><a href="#generator-js-文件" class="headerlink" title="generator.js 文件"></a>generator.js 文件</h3><p>该文件用来修改项目中的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">module.exports &#x3D; (api, options, rootOptions) &#x3D;&gt; &#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * --modern 使用现代模式构建应用，为现代浏览器交付原生支持的 ES2015 代码，并生成一个兼容老浏览器的包用来自动回退</span><br><span class="line">     * --mode test, sandbox,online 对应.env.test 不同环境模式</span><br><span class="line">     * </span><br><span class="line">     * </span><br><span class="line">    *&#x2F;</span><br><span class="line"></span><br><span class="line">    const pkg &#x3D; &#123;</span><br><span class="line">        scripts: &#123;</span><br><span class="line">            &#39;build:test&#39;: &#39;cross-env APP_NS&#x3D;test vue-cli-service build --dest dist&#x2F;test --mode test --modern&#39;,</span><br><span class="line">            &#39;build:sandbox&#39;: &#39;cross-env APP_NS&#x3D;sandbox vue-cli-service build --dest dist&#x2F;sandbox --mode sandbox --modern&#39;,</span><br><span class="line">            &#39;build:online&#39;: &#39;cross-env APP_NS&#x3D;online vue-cli-service build --dest dist&#x2F;online --mode online --modern&#39;,</span><br><span class="line">        &#125;,</span><br><span class="line">        devDependencies: &#123;</span><br><span class="line">            &quot;node-sass&quot;: &quot;^4.13.1&quot;,</span><br><span class="line">            &quot;sass-loader&quot;: &quot;^8.0.2&quot;,</span><br><span class="line">            &quot;mockjs&quot;: &quot;^1.0.1-beta3&quot;,</span><br><span class="line">            &quot;postcss-px2rem&quot;: &quot;^0.3.0&quot;,</span><br><span class="line">            &#39;@types&#x2F;express&#39;: &#39;^4.16.0&#39;,</span><br><span class="line">            &#39;@types&#x2F;webpack-chain&#39;: &#39;^4.8.1&#39;,</span><br><span class="line">            &#39;cross-env&#39;: &#39;^5.2.0&#39;,</span><br><span class="line">            &#39;mockjs&#39;: &#39;^1.0.1-beta3&#39;,</span><br><span class="line">            &#39;express&#39;: &#39;^4.16.4&#39;,</span><br><span class="line">            &#39;mocker-api&#39;: &#39;^1.6.6&#39;</span><br><span class="line">        &#125;,</span><br><span class="line">        dependencies: &#123;</span><br><span class="line">            &quot;axios&quot;: &quot;^0.18.0&quot;,</span><br><span class="line">            &quot;lodash&quot;: &quot;^4.17.10&quot;,</span><br><span class="line">            &quot;keymirror&quot;: &quot;^0.1.1&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        babel: &#123;&#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">    &#x2F;&#x2F; 安装一些基础公共库</span><br><span class="line">    </span><br><span class="line">    api.extendPackage(pkg)</span><br><span class="line">    &#x2F;&#x2F; 公共基础目录和文件 配置整个模板</span><br><span class="line">    &#x2F;&#x2F; </span><br><span class="line">    api.render(&#39;.&#x2F;template&#39;);</span><br><span class="line">    &#x2F;&#x2F; 配置文件 单独配置指定文件</span><br><span class="line">  api.render(&#123;</span><br><span class="line">    &#39;.&#x2F;.eslintrc.js&#39;     : &#39;.&#x2F;template&#x2F;_eslintrc.js&#39;,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>主要api:</p>
+<ul>
+<li><p>api.extendPackage : 负责给初始化项目中的 package.json 添加额外依赖并安装；</p>
+</li>
+<li><p>api.render : 负责将模板项目中提前定义好的目录和文件拷贝到初始化的项目中；</p>
+<ol>
+<li>直接传地址字符串，render 函数会将你所传目录内的所有文件覆盖初始化项目中根 目录下的文件；</li>
+<li>直接传入一个 object，其中 key 对应初始化项目中的目标位置，value 对应模板项目中的文件位置；</li>
+<li>当你需要复制一个以 . 开头的文件时，模板项目中需要用 _ 替代 .；</li>
+</ol>
+</li>
+<li><p>api.postProcessFiles : 负责具体处理模板项目中的文件</p>
+</li>
+</ul>
+<p>vue-cli 3 在拷贝文件时使用的是 EJS 模板去实现的，所以开发者是可以在任意文件中使用 EJS 语法去做更细粒度的控制。比如我的 main.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import App from &#39;.&#x2F;App.vue&#39;</span><br><span class="line">&lt;%_ if (options.vuex) &#123; _%&gt;</span><br><span class="line">import store from &#39;.&#x2F;store&#39;</span><br><span class="line">&lt;%_ &#125; _%&gt;</span><br><span class="line">&lt;%_ if (options.elementUI) &#123; _%&gt;</span><br><span class="line">import ElementUI from &#39;element-ui&#39;;</span><br><span class="line">Vue.use(ElementUI);</span><br><span class="line">&lt;%_ &#125; _%&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; simulation data</span><br><span class="line">import &#39;.&#x2F;mock&#x2F;index&#39;;</span><br><span class="line"></span><br><span class="line">Vue.config.productionTip &#x3D; false</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  &lt;%_ if (options.vuex) &#123; _%&gt;</span><br><span class="line">  store,</span><br><span class="line">  &lt;%_ &#125; _%&gt;</span><br><span class="line">  render: h &#x3D;&gt; h(App)</span><br><span class="line">&#125;).$mount(&#39;#app&#39;)</span><br><span class="line"></span><br><span class="line"> &#x2F;&#x2F; 更多语法参考 YAML  https:&#x2F;&#x2F;yaml.org&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/s249359986/vue-cli-plugin-sdh" target="_blank" rel="noopener">项目github地址</a></p>
+<h3 id="模板使用"><a href="#模板使用" class="headerlink" title="模板使用"></a>模板使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create --preset s249359986&#x2F;vue-cli-plugin-sdh my-project</span><br></pre></td></tr></table></figure>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+  
+
+</article>
+    
     <article id="post-blog2020-03-20-1802" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
